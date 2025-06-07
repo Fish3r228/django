@@ -6,3 +6,4 @@ def home_view(request):
 
 def contacts_view(request):
     return render(request, 'catalog/contacts.html')
+#
