@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from django.db import models
-
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование')
@@ -31,3 +28,4 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+#1
