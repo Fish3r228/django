@@ -19,3 +19,4 @@ class Command(BaseCommand):
         Product.objects.create(name='Novel', description='Interesting novel book', category=cat2, price=19.99)
 
         self.stdout.write(self.style.SUCCESS('Тестовые данные успешно добавлены.'))
+#1
