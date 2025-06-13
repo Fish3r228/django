@@ -4,4 +4,4 @@ __pycache__/
 *.pyc
 db.sqlite3
 *.log
-#1
+#catalog/migrations
