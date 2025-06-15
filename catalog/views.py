@@ -18,5 +18,7 @@ def index(request):
 
 
 def product_list(request):
-    # логика для отображения списка товаров
+
     return render(request, 'catalog/product_list.html', context={})
+
+#
