@@ -3,65 +3,13 @@
   "model": "catalog.product",
   "pk": 1,
   "fields": {
-    "name": "Smartphone",
-    "description": "A cool smartphone",
+    "name": "Телефон",
+    "description": "Смартфон",
     "image": "",
     "category": 1,
-    "price": "699.99",
-    "created_at": "2025-06-13T19:49:06.463Z",
-    "updated_at": "2025-06-13T19:49:06.464Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 2,
-  "fields": {
-    "name": "Laptop",
-    "description": "Powerful laptop",
-    "image": "",
-    "category": 1,
-    "price": "1299.99",
-    "created_at": "2025-06-13T19:49:06.469Z",
-    "updated_at": "2025-06-13T19:49:06.469Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 3,
-  "fields": {
-    "name": "Novel",
-    "description": "Interesting novel book",
-    "image": "",
-    "category": 2,
-    "price": "19.99",
-    "created_at": "2025-06-13T19:49:06.471Z",
-    "updated_at": "2025-06-13T19:49:06.471Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 4,
-  "fields": {
-    "name": "Smartphone",
-    "description": "A cool smartphone",
-    "image": "",
-    "category": 3,
-    "price": "749.99",
-    "created_at": "2025-06-13T19:52:48.301Z",
-    "updated_at": "2025-06-13T19:53:22.273Z"
-  }
-},
-{
-  "model": "catalog.product",
-  "pk": 5,
-  "fields": {
-    "name": "Laptop",
-    "description": "Powerful laptop",
-    "image": "",
-    "category": 3,
-    "price": "1299.99",
-    "created_at": "2025-06-13T19:52:48.306Z",
-    "updated_at": "2025-06-13T19:52:48.306Z"
+    "price": "459.99",
+    "created_at": "2025-06-14T13:12:52.574Z",
+    "updated_at": "2025-06-14T13:12:52.587Z"
   }
 }
 ]
