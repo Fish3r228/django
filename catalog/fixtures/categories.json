@@ -3,32 +3,16 @@
   "model": "catalog.category",
   "pk": 1,
   "fields": {
-    "name": "Electronics",
-    "description": "Electronic gadgets"
+    "name": "Электроника",
+    "description": "Все для дома"
   }
 },
 {
   "model": "catalog.category",
   "pk": 2,
   "fields": {
-    "name": "Books",
-    "description": "All kinds of books"
-  }
-},
-{
-  "model": "catalog.category",
-  "pk": 3,
-  "fields": {
-    "name": "Electronics",
-    "description": "Electronic gadgets"
-  }
-},
-{
-  "model": "catalog.category",
-  "pk": 4,
-  "fields": {
-    "name": "Books",
-    "description": "All kinds of books"
+    "name": "Одежда",
+    "description": "Мужская и женская одежда"
   }
 }
 ]
