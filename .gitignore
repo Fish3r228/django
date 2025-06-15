@@ -1,11 +1,53 @@
-*.pyc
+# Python
 __pycache__/
-*.sqlite3
-.env
-/media/
-venv/
-.poetry/
+*.py[cod]
+*$py.class
+
+# Django stuff:
 *.log
 *.pot
-*.mo
-#
+*.pyc
+*.sqlite3
+db.sqlite3
+
+# Media files (если у тебя есть папка для загружаемых медиа)
+media/
+media/*
+
+# Static files (можно исключить, если не хочешь коммитить собранные статики)
+staticfiles/
+static/
+
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# pyenv
+.python-version
+
+# pytest
+.cache/
+
+# mypy
+.mypy_cache/
+
+# coverage
+.coverage
+htmlcov/
+
+# celery beat schedule file
+celerybeat-schedule
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
