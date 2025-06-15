@@ -11,4 +11,4 @@ class Command(BaseCommand):
         call_command('loaddata', 'categories.json')
         call_command('loaddata', 'products.json')
         self.stdout.write(self.style.SUCCESS('Тестовые данные загружены!'))
-#
+##
