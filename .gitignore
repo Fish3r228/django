@@ -51,4 +51,3 @@ celerybeat-schedule
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
-#
