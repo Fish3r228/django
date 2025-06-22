@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p><small>Создано: {{ post.created_at|date:"d.m.Y H:i" }}</small></p>
+  <div>
+    {{ post.content|linebreaks }}
+  </div>
+
+  <a href="{% url 'blog_edit' post.pk %}">Редактировать</a> |
+  <a href="{% url 'blog_delete' post.pk %}">Удалить</a> |
+  <a href="{% url 'blog_list' %}">Назад к списку</a>
+{% endblock %}
