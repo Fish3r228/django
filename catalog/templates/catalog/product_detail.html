@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-
-#
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" width="300">
+  <p>{{ product.description }}</p>
+  <p>Категория: {{ product.category.name }}</p>
+  <p>Цена: {{ product.price }} ₽</p>
+  <a href="{% url 'index' %}">← Назад</a>
+{% endblock %}
