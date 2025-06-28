@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
+BAD_WORDS = ['дурак', 'плохой', 'запрещено']
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование')
@@ -12,6 +15,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    is_available = models.BooleanField(default=True, verbose_name="Доступен ли товар")
     name = models.CharField(max_length=255, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание')
     image = models.ImageField(upload_to='products/', verbose_name='Изображение', null=True, blank=True)
@@ -26,3 +30,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        super().clean()
+        for bad_word in BAD_WORDS:
+            if bad_word.lower() in self.name.lower():
+                raise ValidationError({'name': f'Название содержит запрещённое слово: {bad_word}'})
+            if bad_word.lower() in self.description.lower():
+                raise ValidationError({'description': f'Описание содержит запрещённое слово: {bad_word}'})
+        if self.price < 0:
+            raise ValidationError({'price': 'Цена не может быть отрицательной'})

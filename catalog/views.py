@@ -1,24 +1,32 @@
-from django.views.generic import TemplateView, ListView, DetailView
-from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView, DetailView, CreateView, UpdateView, DeleteView
+)
 from .models import Product
-
-
-class HomeView(TemplateView):
-    template_name = 'catalog/home.html'
-
-
-class ContactsView(TemplateView):
-    template_name = 'catalog/contacts.html'
-
+from .forms import ProductForm
 
 class ProductListView(ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
 
-
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'product_detail.html'
+    template_name = 'catalog/product_detail.html'
     context_object_name = 'product'
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_form.html'
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_form.html'
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'catalog/product_confirm_delete.html'
+    success_url = reverse_lazy('product_list')
 
