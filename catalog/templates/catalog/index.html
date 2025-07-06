@@ -1,7 +1,7 @@
-{% for product in products %}
+{% url 'catalog:product_detail' product.pk %}
   <div>
     <img src="{{ product.image.url }}" alt="{{ product.name }}" width="150">
-    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h3>
+    <h3><a href="{% url 'catalog:product_detail' product.pk %}">{{ product.name }}</a></h3>
     <p>{{ product.description|truncatechars:100 }}</p>
   </div>
 {% endfor %}
