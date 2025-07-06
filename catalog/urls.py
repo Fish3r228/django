@@ -1,17 +1,15 @@
 from django.urls import path
 from . import views
-from catalog.apps import CatalogConfig
 
-app_name = CatalogConfig.name
+app_name = 'catalog'
 
 urlpatterns = [
-    path('products/', views.ProductListView.as_view(), name='product_list'),
+    # path('index/', views.index, name='index'),  # <- убираем или комментируем эту строку
+    path('', views.ProductListView.as_view(), name='product_list'),  # Главная страница — список товаров
     path('product/<int:pk>/', views.ProductDetailView.as_view(), name='product_detail'),
     path('product/create/', views.ProductCreateView.as_view(), name='product_create'),
     path('product/<int:pk>/update/', views.ProductUpdateView.as_view(), name='product_update'),
     path('product/<int:pk>/delete/', views.ProductDeleteView.as_view(), name='product_delete'),
-    path('contacts/', views.contacts, name='contacts'),
-    path('index/', views.index, name='index'),
 ]
 
 
