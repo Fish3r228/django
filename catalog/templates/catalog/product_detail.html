@@ -1,11 +1,14 @@
-{% extends "catalog/base.html" %}
+{% if user.has_perm 'catalog.can_unpublish_product' %}
+    <form action="{% url 'catalog:product-unpublish' product.pk %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Снять с публикации</button>
+    </form>
+{% endif %}
 
-{% block content %}
-<h1>{{ product.name }}</h1>
-<p><strong>Цена:</strong> {{ product.price }}</p>
-<p><strong>Описание:</strong> {{ product.description }}</p>
+{% if user.is_authenticated %}
+    {% if product.owner == user or user.groups.filter(name='Модератор продуктов').exists %}
+        <a href="{% url 'catalog:product-update' product.pk %}">Редактировать</a>
+        <a href="{% url 'catalog:product-delete' product.pk %}">Удалить</a>
+    {% endif %}
+{% endif %}
 
-<a href="{% url 'product_update' product.pk %}" class="btn btn-primary">Редактировать</a>
-<a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Удалить</a>
-<a href="{% url 'product_list' %}" class="btn btn-secondary">Назад к списку</a>
-{% endblock %}
