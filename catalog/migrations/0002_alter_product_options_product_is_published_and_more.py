@@ -6,6 +6,13 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """
+    Миграция добавляет:
+    - флаг is_published в модель Product;
+    - связь owner с пользователем (владелец товара);
+    - пользовательское разрешение 'can_unpublish_product';
+    - человекочитаемые имена модели Product.
+    """
 
     dependencies = [
         ('catalog', '0001_initial'),

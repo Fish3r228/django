@@ -9,13 +9,35 @@ class Category(models.Model):
     description = models.TextField(verbose_name='Описание')
 
     class Meta:
+        """
+        Метаданные модели:
+        - verbose_name и verbose_name_plural: человекочитаемые названия;
+        - custom permissions: разрешение can_unpublish_product.
+        """
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
     def __str__(self):
+        """
+        Строковое представление объекта продукта (его имя).
+        """
         return self.name
 
 class Product(models.Model):
+    """
+    Модель товара.
+
+    Атрибуты:
+    - name: название продукта;
+    - description: описание;
+    - image: изображение;
+    - price: цена;
+    - created_at: дата создания;
+    - updated_at: дата обновления;
+    - is_available: доступность;
+    - is_published: опубликован ли;
+    - owner: владелец (пользователь).
+    """
     is_available = models.BooleanField(default=True, verbose_name="Доступен ли товар")
     is_published = models.BooleanField(default=False, verbose_name="Опубликован")
 
