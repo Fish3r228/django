@@ -4,9 +4,17 @@ from django.contrib.contenttypes.models import ContentType
 from catalog.models import Product
 
 class Command(BaseCommand):
+    """
+    Команда для создания группы 'Модератор продуктов' и назначения ей прав:
+    - удаление продуктов;
+    - снятие публикации с продукта.
+    """
     help = 'Создаёт группу Модераторов продуктов и назначает права'
 
     def handle(self, *args, **kwargs):
+        """
+        Основной метод, выполняющий создание группы и добавление прав.
+        """
         group, created = Group.objects.get_or_create(name='Модератор продуктов')
 
         content_type = ContentType.objects.get_for_model(Product)
