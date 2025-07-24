@@ -1,41 +1,73 @@
-## My Django Project
+# 🐍 My Django Project
 
-## Описание
+## 📋 Описание
 
-- Учебный проект на Django с приложением catalog, домашней страницей и страницей "Контакты".
+Учебный проект на Django с реализацией:
 
-- Структура веток (GitFlow)
+- приложения `catalog` для управления товарами,
+- приложения `blogs` для публикации блоговых записей,
+- домашней страницы и страницы "Контакты",
+- системы прав доступа и групп пользователей.
 
-- main
-- develop
-- feature/* — для разработки новых фич #1
+Проект организован по структуре GitFlow:
+
+- `main` — продуктивная версия (релизы),
+- `develop` — основная ветка разработки,
+- `feature/*` — ветки для разработки новых функций (например, `feature/homework-1`).
 
 ## 🔐 Права доступа
 
-В проекте реализована система прав доступа для управления товарами. Используются возможности Django: **группы**, **разрешения (permissions)** и **миксины** (`LoginRequiredMixin`, `UserPassesTestMixin`, `PermissionRequiredMixin`).
+В проекте реализована система разграничения прав доступа с использованием:
+
+- Django-групп (`Group`),
+- стандартных и кастомных разрешений (`Permission`),
+- миксинов:
+  - `LoginRequiredMixin`
+  - `UserPassesTestMixin`
+  - `PermissionRequiredMixin`
 
 ### 🛡 Группа "Модератор продуктов"
 
-Для управления доступом используется группа **Модератор продуктов**. Она создаётся автоматически через команду:
+Для модерации товаров создаётся специальная группа "Модератор продуктов" с правами:
 
-# Эта группа получает следующие права:
+- `can_unpublish_product` — может снимать товары с публикации,
+- `delete_product` — может удалять товары.
 
-can_unpublish_product — может снимать товары с публикации;
-delete_product — может удалять товары.
-##🧑‍💻 Пользовательские разрешения
-В модели Product определено собственное разрешение:
+## 🧑‍💻 Пользовательские разрешения
 
+В модели Product добавлено собственное разрешение:
 class Meta:
     permissions = [
-        ("can_unpublish_product", "Can unpublish product"),
-    ]
-##👮 Контроль доступа в представлениях
-Контроль доступа реализован с помощью миксинов и методов test_func().
+("can_unpublish_product", "Can unpublish product"),
+]
 
-##⚙️ Примеры
-- Проверка принадлежности к группе:
+## 👮 Контроль доступа в представлениях
 
-user.groups.filter(name='Модератор продуктов').exists()
-- Проверка наличия пользовательского разрешения:
+Права контролируются с помощью CBV (Class-Based Views) и миксинов.
 
-user.has_perm('catalog.can_unpublish_product')
+Пример проверки принадлежности к группе:
+def test_func(self):
+    return self.request.user.groups.filter(name='Модератор продуктов').exists()
+    
+Пример проверки пользовательского разрешения:
+def test_func(self):
+    return self.request.user.has_perm('catalog.can_unpublish_product')
+
+## ⚙️ Установка и запуск
+1- Клонируй проект: git clone https://github.com/Fish3r228/django.git
+cd django
+2- Создай и активируй виртуальное окружение:
+python -m venv venv
+source venv/bin/activate  # для Linux/macOS
+.\venv\Scripts\activate   # для Windows
+3- Установи зависимости:
+pip install -r requirements.txt
+4- Применить миграции и создать суперпользователя:
+python manage.py migrate
+python manage.py createsuperuser
+5- Запусти сервер: 
+python manage.py runserver
+
+
+
+
